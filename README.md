@@ -328,6 +328,7 @@ export default App;
 - Check DynamoDB: Verify the metadata is saved in the DynamoDB table.
 - EC2 Instance Creation: Check the AWS EC2 console for new instances being created based on DynamoDB events.
 - Logs and Outputs: Use AWS CloudWatch to monitor Lambda function logs and ensure the system is working correctly.
+  
 ## Important Notes
 - Replace placeholders like your-region, your-s3-bucket, and your-api-gateway-endpoint with actual values.
 - Ensure IAM roles and policies are correctly set up to allow necessary permissions for Lambda functions and EC2 instances.
@@ -335,8 +336,12 @@ export default App;
 ## Conclusion
 - This project demonstrates a secure, scalable, and automated workflow using AWS services managed by AWS CDK. The combination of React for the frontend and AWS Lambda, S3, DynamoDB, and EC2 for the backend provides a robust solution for file processing and data handling.
 
+## References
+- https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/
+- Used all the information from this AWS website and referred the sample projects from AWS.
 
-
+## Learning Experience
+This is my first time working with AWS I have experiene in building React projects, and I managed to learn and implement the necessary concepts within 2 days. The provided references helped me understand how to use AWS CDK for infrastructure management, AWS SDK for JavaScript to interact with AWS services, and React for building the frontend application.
 
 
 
