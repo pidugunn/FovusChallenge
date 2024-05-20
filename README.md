@@ -277,6 +277,63 @@ exports.handler = async (event) => {
 
 ```
 
+## Frontend Code
+- src/App.js: Main component for the React app.
+```
+import React, { useState } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [inputText, setInputText] = useState('');
+  const [inputFile, setInputFile] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('inputText', inputText);
+    formData.append('inputFile', inputFile);
+
+    try {
+      const response = await axios.post('your-api-gateway-endpoint', formData);
+      console.log(response.data);
+    } catch (error) {
+      console.error('There was an error uploading the file!', error);
+    }
+  };
+
+  return (
+    <div className="App">
+      <form onSubmit={handleSubmit}>
+        <label>
+          Input Text:
+          <input type="text" value={inputText} onChange={(e) => setInputText(e.target.value)} />
+        </label>
+        <label>
+          Upload File:
+          <input type="file" onChange={(e) => setInputFile(e.target.files[0])} />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
+
+export default App;
+
+```
+## Observing the System
+- Upload Data: Use the React app to upload a file and input text.
+- Check S3: Verify the file is uploaded to the S3 bucket.
+- Check DynamoDB: Verify the metadata is saved in the DynamoDB table.
+- EC2 Instance Creation: Check the AWS EC2 console for new instances being created based on DynamoDB events.
+- Logs and Outputs: Use AWS CloudWatch to monitor Lambda function logs and ensure the system is working correctly.
+## Important Notes
+- Replace placeholders like your-region, your-s3-bucket, and your-api-gateway-endpoint with actual values.
+- Ensure IAM roles and policies are correctly set up to allow necessary permissions for Lambda functions and EC2 instances.
+
+## Conclusion
+- This project demonstrates a secure, scalable, and automated workflow using AWS services managed by AWS CDK. The combination of React for the frontend and AWS Lambda, S3, DynamoDB, and EC2 for the backend provides a robust solution for file processing and data handling.
 
 
 
